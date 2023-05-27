@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon" href="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png" />
   <title>Trojanware</title>
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
@@ -17,16 +18,19 @@
   <style>
     /* Custom CSS */
     .scrollable-card {
-      max-height: 200px; /* Set a max height for the scrollable area */
+      max-height: 200px;
+      /* Set a max height for the scrollable area */
       overflow-y: auto;
     }
 
     .simplebar-scrollbar {
-      background-color: #f8f8f8; /* Set the background color of the scroll bar */
+      background-color: #f8f8f8;
+      /* Set the background color of the scroll bar */
     }
 
     .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
-      background-color: #777; /* Set the color of the scroll bar handle */
+      background-color: #777;
+      /* Set the color of the scroll bar handle */
     }
 
     .simplebar-content-wrapper {
@@ -62,14 +66,17 @@
     .card-description {
       font-size: 14px;
       line-height: 1.5;
-      max-height: 150px; /* Set a max height for initial display */
+      max-height: 150px;
+      /* Set a max height for initial display */
       overflow: hidden;
       transition: max-height 0.3s ease;
-      white-space: pre-wrap; /* Wrap text within the description */
+      white-space: pre-wrap;
+      /* Wrap text within the description */
     }
 
     .card-description.expanded {
-      max-height: none; /* Expand the height when expanded */
+      max-height: none;
+      /* Expand the height when expanded */
     }
 
     .code-block code {
@@ -104,55 +111,109 @@
     .expand-button.expanded svg {
       transform: rotate(180deg);
     }
-    
+
     .card-title {
-  height: 4rem; /* Set a fixed height for the card title */
-}
+      height: 4rem;
+      /* Set a fixed height for the card title */
+    }
 
-.card-description.collapsed {
-  max-height: 5rem; /* Set a fixed height for the collapsed card description */
-}
+    .card-description.collapsed {
+      max-height: 5rem;
+      /* Set a fixed height for the collapsed card description */
+    }
 
-.card-description.expanded {
-  max-height: none; /* Remove the max-height limit for the expanded card description */
-}
+    .card-description.expanded {
+      max-height: none;
+      /* Remove the max-height limit for the expanded card description */
+    }
 
+    .dark-mode-toggle {
+      display: inline-block;
+      position: relative;
+      width: 40px;
+      height: 20px;
+    }
+
+    .dark-mode-checkbox {
+      display: none;
+    }
+
+    .dark-mode-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-icon {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .dark-mode-checkbox:checked+.dark-mode-label {
+      background-color: #4a5568;
+    }
+
+    .dark-mode-checkbox:checked+.dark-mode-label .toggle-icon {
+      transform: translateX(20px);
+    }
   </style>
 </head>
 
 <body class="bg-gray-100">
   <!-- Navigation -->
-  <nav class="bg-blue-500">
+  <nav class="bg-blue-500 fixed w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <a href="#">
-            <img src="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png" alt="Logo" class="logo">
+            <img src="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png"
+              alt="Logo" class="logo">
           </a>
         </div>
-        <div class="hidden md:block">
-          <ul class="ml-10 flex items-center space-x-4">
-            <li><a href="#tutorials" class="text-white hover:text-gray-200">Tutorials</a></li>
-            <li><a href="#bookmarklets" class="text-white hover:text-gray-200">Bookmarklets</a></li>
+        <div class="md:block">
+          <ul class="ml-10 flex items-center space-x-4 justify-center">
+            <li><a href="#tutorials" class="text-white hover:text-blue-200 transition-colors duration-300">Tutorials</a></li>
+<li><a href="#bookmarklets" class="text-white hover:text-blue-200 transition-colors duration-300">Bookmarklets</a></li>
           </ul>
         </div>
+        <div class="dark-mode-toggle">
+          <input type="checkbox" id="dark-mode-checkbox" class="dark-mode-checkbox">
+          <label for="dark-mode-checkbox" class="dark-mode-label">
+            <span class="toggle-icon"></span>
+          </label>
+        </div>
+
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <header id="hero" class="bg-gray-900 py-20 text-white">
+  <header id="hero" class="bg-gray-900 py-20 text-white" style="padding-top: 128px;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="lg:text-center">
         <h1 class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
           <span class="block animate__animated animate__fadeInDown">Welcome to</span>
-          <span class="block text-blue-500 animate__animated animate__fadeInDown animate__delay-100">Tutorials and Bookmarklets</span>
+          <span class="block text-blue-500 animate__animated animate__fadeInDown animate__delay-100">Trojanware</span>
         </h1>
-        <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl animate__animated animate__fadeInUp animate__delay-300 hero-subtitle">
+        <p
+          class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl animate__animated animate__fadeInUp animate__delay-300 hero-subtitle">
           Explore my collection of tutorials and JavaScript bookmarklets.
         </p>
         <div class="mt-10 sm:mt-12">
-          <a id="get-started" href="#tutorials" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full inline-block transform transition hover:scale-110 animate__animated animate__pulse animate__delay-500">Get Started</a>
+          <a id="get-started" href="#tutorials" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full inline-block transform transition hover:scale-110 animate__animated animate__pulse animate__delay-500 transition-transform duration-300">Get Started</a>
         </div>
       </div>
     </div>
@@ -172,7 +233,8 @@
 
       <div class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Tutorial Card 1 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -199,21 +261,24 @@ That's it! You've set up your own proxy server. You can now go on any website bl
     </code>
           </pre>
           <div class="expand-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
-          <path d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="transform transition-transform duration-300 ease-in-out">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
         </div>
 
-    <!-- Tutorial Card 2 -->
-    <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
-      <div class="flex items-center">
-        <!-- ... -->
-      </div>
-      <p class="mt-4 card-title">
-        Tutorial 2: Create a custom bookmarklet
-      </p>
-      <pre class="mt-4 card-description collapsed">
+        <!-- Tutorial Card 2 -->
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Tutorial 2: Create a custom bookmarklet
+          </p>
+          <pre class="mt-4 card-description collapsed">
         <code>
 Creating a custom bookmarklet is a straightforward process. Here's how you can do it:
 
@@ -230,22 +295,25 @@ Click "Save" or "Add" to create the bookmarklet.
 That's it! Your custom bookmarklet is now ready to use. Simply click on it in your bookmarks bar to execute the associated JavaScript code on the current page.
         </code>
       </pre>
-      <div class="expand-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
-          <path d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </div>
-    </div>
+          <div class="expand-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="transform transition-transform duration-300 ease-in-out">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
 
-    <!-- Tutorial Card 3 -->
-    <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
-      <div class="flex items-center">
-        <!-- ... -->
-      </div>
-      <p class="mt-4 card-title">
-        Tutorial 3: Use experimental Chrome features
-      </p>
-      <pre class="mt-4 card-description collapsed">
+        <!-- Tutorial Card 3 -->
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Tutorial 3: Use experimental Chrome features
+          </p>
+          <pre class="mt-4 card-description collapsed">
         <code>
 To preface this, this tutorial probably isn't useful for anyone that isn't slightly obsessive about customizing their technology. For those of you that are, tutorial is below:
 
@@ -256,22 +324,25 @@ The Chrome Flags page contains various experimental features and settings that a
 I'm obsessed with customizing any piece of technology I get my hands on, and Chromebooks are no exception. Play around with the flags and see what works for you - read the descriptions! I was able to customize my Chromebook to force dark mode, use a beautiful but experimental new UI design, and changed the color of all blue UI highlighting to pink. See what you can come up with if you're as obsessive with customization as me  :)
         </code>
       </pre>
-      <div class="expand-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
-          <path d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </div>
-    </div>
+          <div class="expand-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="transform transition-transform duration-300 ease-in-out">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
 
-    <!-- Tutorial Card 4 -->
-    <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
-      <div class="flex items-center">
-        <!-- ... -->
-      </div>
-      <p class="mt-4 card-title">
-        Tutorial 4: Use (Chat)GPT-4 for free at school
-      </p>
-      <pre class="mt-4 card-description collapsed">
+        <!-- Tutorial Card 4 -->
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Tutorial 4: Use (Chat)GPT-4 for free at school
+          </p>
+          <pre class="mt-4 card-description collapsed">
         <code>
 To begin, you need a Replit account. If you don't have one already, go to <a href="https://replit.com/~" style="color: blue;">Replit.com</a> and click on the "Sign up" button at the top right corner of the webpage.
 
@@ -291,12 +362,14 @@ Once the Repl has been run, you should see a small window on the right side of t
 That's it! You've set up your GPT4FREE server. You can now use the premium version of ChatGPT (GPT-4) for free, including at school. Been a game-changer for me with quickly asking questions to ChatGPT without needing to use my phone or disconnect from school WiFi.
         </code>
       </pre>
-      <div class="expand-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
-          <path d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </div>
-    </div>
+          <div class="expand-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="transform transition-transform duration-300 ease-in-out">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
   </section>
 
 
@@ -313,9 +386,11 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
       </div>
 
       <div class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        
+
         <!-- Bookmarklet Card 1 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -330,7 +405,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 2 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -345,7 +422,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 3 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -360,7 +439,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 4 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -375,7 +456,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 5 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -390,7 +473,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 6 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -405,7 +490,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 7 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -420,7 +507,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 8 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -435,7 +524,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 9 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -450,7 +541,9 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
         </div>
 
         <!-- Bookmarklet Card 10 -->
-        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+        <div
+          class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card"
+          data-simplebar>
           <div class="flex items-center">
             <!-- ... -->
           </div>
@@ -481,7 +574,7 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
     </div>
   </footer>
 
-    <!-- Back to Top Button -->
+  <!-- Back to Top Button -->
   <div class="fixed bottom-4 right-4">
     <a href="#hero" class="text-blue-500 hover:text-blue-600 transition-colors duration-300 ease-in-out">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-8 w-8">
@@ -493,6 +586,7 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
   <script src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js"></script>
 
   <script>
     // Initialize Prism for syntax highlighting
@@ -534,6 +628,47 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
       new SimpleBar(card);
     });
   </script>
+
+  <script>
+    const darkModeCheckbox = document.getElementById('dark-mode-checkbox');
+    const darkReaderOptions = {
+      brightness: 100,
+      contrast: 90,
+      sepia: 10
+    };
+    const localStorageKey = 'darkModeEnabled';
+
+    function toggleDarkMode() {
+      const isDarkMode = DarkReader.isEnabled();
+      DarkReader.setFetchMethod(fetchCustom);
+      DarkReader.disable();
+
+      if (!isDarkMode) {
+        DarkReader.setFetchMethod(window.fetch); // Set the fetch method
+        DarkReader.enable(darkReaderOptions);
+        localStorage.setItem(localStorageKey, true);
+      } else {
+        localStorage.removeItem(localStorageKey);
+      }
+    }
+
+    darkModeCheckbox.addEventListener('change', toggleDarkMode);
+
+    // Check if the user had previously enabled dark mode and restore the preference
+    const storedPreference = localStorage.getItem(localStorageKey);
+    if (storedPreference) {
+      DarkReader.setFetchMethod(window.fetch); // Set the fetch method
+      DarkReader.enable(darkReaderOptions);
+      darkModeCheckbox.checked = true;
+    }
+
+    // Custom fetch method to handle CORS policy
+    function fetchCustom(url) {
+      return fetch(url, {mode: 'cors'});
+    }
+
+  </script>
+
 </body>
 
 </html>
