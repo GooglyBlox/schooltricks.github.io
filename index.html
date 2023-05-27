@@ -1,27 +1,538 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Tutorial and Bookmarklets</title>
-    <link href="styles.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials and Bookmarklets</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Animate CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <!-- Prism Syntax Highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet">
+  <!-- Simplebar CSS -->
+  <link href="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS */
+    .scrollable-card {
+      max-height: 200px; /* Set a max height for the scrollable area */
+      overflow-y: auto;
+    }
+
+    .simplebar-scrollbar {
+      background-color: #f8f8f8; /* Set the background color of the scroll bar */
+    }
+
+    .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+      background-color: #777; /* Set the color of the scroll bar handle */
+    }
+
+    .simplebar-content-wrapper {
+      /* Add a small margin to the right to prevent content from overlapping the scrollbar */
+      margin-right: 6px;
+    }
+
+
+    .code-block {
+      background-color: #f8f8f8;
+      padding: 8px;
+      border-radius: 4px;
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Additional Styles */
+    .logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .hero-subtitle {
+      max-width: 28rem;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .card-description {
+      font-size: 14px;
+      line-height: 1.5;
+      max-height: 150px; /* Set a max height for initial display */
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      white-space: pre-wrap; /* Wrap text within the description */
+    }
+
+    .card-description.expanded {
+      max-height: none; /* Expand the height when expanded */
+    }
+
+    .code-block code {
+      word-wrap: break-word;
+    }
+
+    /* Custom Button Styles */
+    .expand-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px;
+      background-color: #f8f8f8;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .expand-button:hover {
+      transform: scale(1.1);
+    }
+
+    .expand-button svg {
+      width: 16px;
+      height: 16px;
+      fill: #777;
+      transition: transform 0.3s ease;
+    }
+
+    .expand-button.expanded svg {
+      transform: rotate(180deg);
+    }
+    
+    .card-title {
+  height: 4rem; /* Set a fixed height for the card title */
+}
+
+.card-description.collapsed {
+  max-height: 5rem; /* Set a fixed height for the collapsed card description */
+}
+
+.card-description.expanded {
+  max-height: none; /* Remove the max-height limit for the expanded card description */
+}
+
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Tutorial and Bookmarklets</h1>
-    </header>
-    <main>
-        <section id="tutorials">
-            <h2>Tutorials</h2>
-            <!-- Each tutorial will be an article with a title, description, and body -->
-            <!-- These will be dynamically generated from scripts.js -->
-        </section>
-        <section id="bookmarklets">
-            <h2>Bookmarklets</h2>
-            <!-- Bookmarklet contents will go here -->
-        </section>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-javascript.min.js"></script>
-    <script src="scripts.js"></script>
+
+<body class="bg-gray-100">
+  <!-- Navigation -->
+  <nav class="bg-blue-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <a href="#">
+            <img src="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png" alt="Logo" class="logo">
+          </a>
+        </div>
+        <div class="hidden md:block">
+          <ul class="ml-10 flex items-center space-x-4">
+            <li><a href="#tutorials" class="text-white hover:text-gray-200">Tutorials</a></li>
+            <li><a href="#bookmarklets" class="text-white hover:text-gray-200">Bookmarklets</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="bg-gray-900 py-20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:text-center">
+        <h1 class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
+          <span class="block animate__animated animate__fadeInDown">Welcome to</span>
+          <span class="block text-blue-500 animate__animated animate__fadeInDown animate__delay-100">Tutorials and Bookmarklets</span>
+        </h1>
+        <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl animate__animated animate__fadeInUp animate__delay-300 hero-subtitle">
+          Explore my collection of tutorials and JavaScript bookmarklets.
+        </p>
+        <div class="mt-10 sm:mt-12">
+          <a id="get-started" href="#tutorials" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full inline-block transform transition hover:scale-110 animate__animated animate__pulse animate__delay-500">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tutorials Section -->
+  <section id="tutorials" class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:text-center">
+        <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          Tutorials
+        </h2>
+        <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+          A few tutorials for things I feel the need to share.
+        </p>
+      </div>
+
+      <div class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Tutorial Card 1 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Tutorial 1: How to host your own proxy
+          </p>
+          <pre class="mt-4 card-description collapsed">
+            <code>
+To begin, you need a Replit account. If you don't have one already, go to <a href="https://replit.com/~" style="color: blue;">Replit.com</a> and click on the "Sign up" button at the top right corner of the webpage.
+
+You'll be prompted to provide an email address, username, and password. After you've signed up and verified your email, log in to your new account.
+
+Next, navigate to the <a href="https://replit.com/@AmuariAlvarado/Supernova-v2" style="color: blue;">Supernova Proxy Repl</a> that you will be using as your base proxy server.
+
+Once on the <a href="https://replit.com/@AmuariAlvarado/Supernova-v2" style="color: blue;">Supernova</a> page, click on the "Fork" button at the right of the page. This will create a copy of the codebase into your Replit account.
+
+"Forking" is a term used in software development which essentially means creating a copy of a particular software project, allowing you to experiment and make changes without affecting the original project. In this case, you're making a copy of the Supernova proxy server so that you can host it yourself.
+
+In your forked version of the Supernova Repl, click on the 'Run' button at the top of the page. This will initialize the Repl and start your proxy server.
+
+Once the Repl has been run, you should see a small window on the right side of the page displaying the output of your Repl. There will be a button at the top of this window that says "Open in a new tab". Click this button to open your proxy server in a new browser tab.
+
+That's it! You've set up your own proxy server. You can now go on any website blocked by the school's network or blocked by the spyware extensions they put on your device (GoGuardian, Lanschool, etc).
+    </code>
+          </pre>
+          <div class="expand-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
+          <path d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+        </div>
+
+    <!-- Tutorial Card 2 -->
+    <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+      <div class="flex items-center">
+        <!-- ... -->
+      </div>
+      <p class="mt-4 card-title">
+        Tutorial 2: Create a custom bookmarklet
+      </p>
+      <pre class="mt-4 card-description collapsed">
+        <code>
+Creating a custom bookmarklet is a straightforward process. Here's how you can do it:
+
+Copy the code from the bookmarklet you want from the <a href="https://tutorials-and-bookmarklets.googlyblox.repl.co/#bookmarklets" style="color: blue;">bookmarklets section</a>.
+
+Right-click on your browser's bookmarks bar and select "Add Page" or "Add Bookmark."
+
+In the "Name" field, enter a name for your bookmarklet.
+
+In the "URL" or "Location" field, paste the JavaScript code you copied earlier. Make sure it begins with the "javascript:" protocol.
+
+Click "Save" or "Add" to create the bookmarklet.
+
+That's it! Your custom bookmarklet is now ready to use. Simply click on it in your bookmarks bar to execute the associated JavaScript code on the current page.
+        </code>
+      </pre>
+      <div class="expand-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
+          <path d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Tutorial Card 3 -->
+    <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+      <div class="flex items-center">
+        <!-- ... -->
+      </div>
+      <p class="mt-4 card-title">
+        Tutorial 3: Use experimental Chrome features
+      </p>
+      <pre class="mt-4 card-description collapsed">
+        <code>
+To preface this, this tutorial probably isn't useful for anyone that isn't slightly obsessive about customizing their technology. For those of you that are, tutorial is below:
+
+In the address bar of the Chrome browser, type "chrome://flags" (without the quotes) and press Enter. This will take you to the Chrome Flags page.
+
+The Chrome Flags page contains various experimental features and settings that are not enabled by default in the stable version of Chrome. These flags allow you to customize and tweak different aspects of Chrome's functionality. 
+          
+I'm obsessed with customizing any piece of technology I get my hands on, and Chromebooks are no exception. Play around with the flags and see what works for you - read the descriptions! I was able to customize my Chromebook to force dark mode, use a beautiful but experimental new UI design, and changed the color of all blue UI highlighting to pink. See what you can come up with if you're as obsessive with customization as me  :)
+        </code>
+      </pre>
+      <div class="expand-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
+          <path d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Tutorial Card 4 -->
+    <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:-translate-y-2 transition duration-300 ease-in-out">
+      <div class="flex items-center">
+        <!-- ... -->
+      </div>
+      <p class="mt-4 card-title">
+        Tutorial 4: Use (Chat)GPT-4 for free at school
+      </p>
+      <pre class="mt-4 card-description collapsed">
+        <code>
+To begin, you need a Replit account. If you don't have one already, go to <a href="https://replit.com/~" style="color: blue;">Replit.com</a> and click on the "Sign up" button at the top right corner of the webpage.
+
+You'll be prompted to provide an email address, username, and password. After you've signed up and verified your email, log in to your new account.
+
+Next, navigate to the <a href="https://replit.com/@gpt4free/gpt4free-webui" style="color: blue;">GPT4FREE Repl</a>.
+
+Once on the <a href="https://replit.com/@gpt4free/gpt4free-webui" style="color: blue;">GPT4FREE</a> page, click on the "Fork" button at the right of the page. This will create a copy of the codebase into your Replit account.
+
+"Forking" is a term used in software development which essentially means creating a copy of a particular software project, allowing you to experiment and make changes without affecting the original project. In this case, you're making a
+copy of the GPT4FREE server so that you can host it yourself.
+
+In your forked version of the GPT4FREE Repl, click on the 'Run' button at the top of the page. This will initialize the Repl and start your GPT server.
+
+Once the Repl has been run, you should see a small window on the right side of the page displaying the output of your Repl. There will be a button at the top of this window that says "Open in a new tab". Click this button to open your website in a new browser tab.
+
+That's it! You've set up your GPT4FREE server. You can now use the premium version of ChatGPT (GPT-4) for free, including at school. Been a game-changer for me with quickly asking questions to ChatGPT without needing to use my phone or disconnect from school WiFi.
+        </code>
+      </pre>
+      <div class="expand-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform duration-300 ease-in-out">
+          <path d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Bookmarklets Section -->
+  <section id="bookmarklets" class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:text-center">
+        <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          JavaScript Bookmarklets
+        </h2>
+        <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+          Sneaky little things to use every now and then.
+        </p>
+      </div>
+
+      <div class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <!-- Bookmarklet Card 1 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 1: Canvas Anti-log
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:(function() {    Window.prototype.realEventListener = Window.prototype.addEventListener;    Window.prototype.addEventListener = function(a, b, c) {        if (a == 'focus' || a == 'blur') {            console.log('[AD] \'' + a + '\' event subscription prevented.');        } else {            this.realEventListener(a, b, c);        }    };})();
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 2 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 2: Change tab header and image to G-Drive
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:function gcloak() { var link = document.querySelector("link[rel*='icon']") || document.createElement('link');link.type = 'image/x-icon';link.rel = 'shortcut icon';link.href = 'https://cdn-icons-png.flaticon.com/512/5968/5968523.png';document.title = 'My Drive - Google Drive';console.log(document.title);document.getElementsByTagName('head')[0].appendChild(link) };gcloak();setInterval(gcloak, 1000);
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 3 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 3: Inspect Element Clone
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 4 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 4: Site In-Tab
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:(function(){var a=document.getElementById("rusic-modal")||document.createElement("iframe");a.setAttribute("allow","fullscreen");a.src=prompt("Enter URL:","example.com");a.id="rusic-modal";a.style="position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;";document.body.appendChild(a);}());
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 5 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 5: Flood Browsing History
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:var num=prompt("History flood amount:");done=false;x=window.location.href;for (var i=1; i<=num; i++){history.pushState(0, 0, i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert(%22History%20flood%20successful!%20%22+window.location.href+%22%20now%20appears%20in%20your%20history%20%22+num+(num==1?%22%20time.%22:%22%20times.%22))}
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 6 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 6: Prevent Tab Closing
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:window.onbeforeunload = function() { return "Do you want to close"; }; alert("Tab Secured");
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 7 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 7: EdPuzzle Auto-Complete
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript: fetch("https://cdn.jsdelivr.net/gh/ading2210/edpuzzle-answers@latest/script.js").then(r => r.text()).then(r => eval(r))
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 8 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 8: Speed Up Video
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript:setInterval(() => document.querySelector("video").playbackRate = (window.speed || (window.speed = +prompt("New speed", 10))), 50)
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 9 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 9: Autoclicker
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript: var DELAY = 1;var autoClickerStyleElement = document.createElement('style');autoClickerStyleElement.innerHTML='*{cursor: crosshair !important;}';document.body.appendChild(autoClickerStyleElement);function addClicker(e) {if(!e.isTrusted) {return;}if(e.target.classList.contains('auto-clicker-target')) {e.target.classList.remove('auto-clicker-target');} else {e.target.classList.add('auto-clicker-target');}document.body.removeChild(autoClickerStyleElement);document.body.removeEventListener('click', addClicker);e.preventDefault();autoClick(e.target);}function autoClick(element) {if(element.classList.contains('auto-clicker-target')) {element.click();setTimeout(function(){ autoClick(element); }, DELAY);}}document.body.addEventListener('click', addClicker, 99999999999);
+            </code>
+          </div>
+        </div>
+
+        <!-- Bookmarklet Card 10 -->
+        <div class="bg-white overflow-hidden shadow-xl rounded-xl p-6 transform hover:scale-105 transition duration-300 ease-in-out scrollable-card" data-simplebar>
+          <div class="flex items-center">
+            <!-- ... -->
+          </div>
+          <p class="mt-4 card-title">
+            Bookmarklet 10: Open an "about:blank" Tab
+          </p>
+          <div class="code-block language-javascript">
+            <code>
+              javascript: (function () {var url = prompt("Paste the link you want to be embedded into an about:blank page.\n(INCLUDE https://)", "https://example.com"); var urlObj = new window.URL(window.location.href); win = window.open(); win.document.body.style.margin = "0"; win.document.body.style.height = "100vh"; var iframe = win.document.createElement("iframe"); iframe.style.border = "none"; iframe.style.width = "100%"; iframe.style.height = "100%"; iframe.style.margin = "0"; iframe.referrerpolicy = "no-referrer"; iframe.src = url; win.document.body.appendChild(iframe); })();
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between">
+        <div>
+          <p>&copy; Courtesy of the Class of '23</p>
+        </div>
+        <div>
+          <p>Made with ❤️ for the lowerclassmen</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Back to Top Button -->
+  <div class="fixed bottom-4 right-4">
+    <a href="#hero" class="text-blue-500 hover:text-blue-600 transition-colors duration-300 ease-in-out">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-8 w-8">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
+
+  <script>
+    // Initialize Prism for syntax highlighting
+    Prism.highlightAll();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.7.3/dist/alpine.min.js"></script>
+  <script>
+    // Smooth scrolling on anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Expand/Collapse functionality
+    const expandButtons = document.querySelectorAll('.expand-button');
+    expandButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.parentNode;
+        const cardDescription = card.querySelector('.card-description');
+
+        if (cardDescription.classList.contains('expanded')) {
+          cardDescription.classList.remove('expanded');
+          button.classList.remove('expanded');
+        } else {
+          cardDescription.classList.add('expanded');
+          button.classList.add('expanded');
+        }
+      });
+    });
+
+    // Initialize Simplebar on scrollable-card elements
+    const scrollableCards = document.querySelectorAll('.scrollable-card');
+    scrollableCards.forEach(card => {
+      new SimpleBar(card);
+    });
+  </script>
 </body>
+
 </html>
