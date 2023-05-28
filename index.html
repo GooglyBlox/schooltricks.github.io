@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon"
-    href="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://universityhigh.iusd.org/themes/custom/iusd/assets/logo-footer-solo/universityhigh.png" />
   <title>Trojanware</title>
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
@@ -168,6 +167,32 @@
 
     .dark-mode-checkbox:checked+.dark-mode-label .toggle-icon {
       transform: translateX(20px);
+    }
+
+    .copy-button {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      padding: 2px;
+      background-color: #f8f8f8;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .copy-button:hover {
+      transform: scale(1.1);
+    }
+
+    .copy-button svg {
+      width: 16px;
+      height: 16px;
+      fill: #777;
+    }
+
+    .code-block-container:hover .copy-button {
+      display: block;
     }
   </style>
 </head>
@@ -394,13 +419,21 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <div class="flex items-center">
             <!-- ... -->
           </div>
-          <p class="mt-4 card-title">
+           <p class="mt-4 card-title">
             Bookmarklet 1: Canvas Anti-log
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:(function() {    Window.prototype.realEventListener = Window.prototype.addEventListener;    Window.prototype.addEventListener = function(a, b, c) {        if (a == 'focus' || a == 'blur') {            console.log('[AD] \'' + a + '\' event subscription prevented.');        } else {            this.realEventListener(a, b, c);        }    };})();
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+                javascript:(function() {    Window.prototype.realEventListener = Window.prototype.addEventListener;    Window.prototype.addEventListener = function(a, b, c) {        if (a == 'focus' || a == 'blur') {            console.log('[AD] \'' + a + '\' event subscription prevented.');        } else {            this.realEventListener(a, b, c);        }    };})();
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -414,10 +447,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 2: Change tab header and image to G-Drive
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:function gcloak() { var link = document.querySelector("link[rel*='icon']") || document.createElement('link');link.type = 'image/x-icon';link.rel = 'shortcut icon';link.href = 'https://cdn-icons-png.flaticon.com/512/5968/5968523.png';document.title = 'My Drive - Google Drive';console.log(document.title);document.getElementsByTagName('head')[0].appendChild(link) };gcloak();setInterval(gcloak, 1000);
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript:function gcloak() { var link = document.querySelector("link[rel*='icon']") || document.createElement('link');link.type = 'image/x-icon';link.rel = 'shortcut icon';link.href = 'https://cdn-icons-png.flaticon.com/512/5968/5968523.png';document.title = 'My Drive - Google Drive';console.log(document.title);document.getElementsByTagName('head')[0].appendChild(link) };gcloak();setInterval(gcloak, 1000);
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -431,10 +472,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 3: Inspect Element Clone
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript:(function () { var script = document.createElement('script'); script.src="//cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() } })();
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -448,10 +497,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 4: Site In-Tab
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:(function(){var a=document.getElementById("rusic-modal")||document.createElement("iframe");a.setAttribute("allow","fullscreen");a.src=prompt("Enter URL:","example.com");a.id="rusic-modal";a.style="position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;";document.body.appendChild(a);}());
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript:(function(){var a=document.getElementById("rusic-modal")||document.createElement("iframe");a.setAttribute("allow","fullscreen");a.src=prompt("Enter URL:","example.com");a.id="rusic-modal";a.style="position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;";document.body.appendChild(a);}());
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -465,10 +522,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 5: Flood Browsing History
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:var num=prompt("History flood amount:");done=false;x=window.location.href;for (var i=1; i<=num; i++){history.pushState(0, 0, i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert(%22History%20flood%20successful!%20%22+window.location.href+%22%20now%20appears%20in%20your%20history%20%22+num+(num==1?%22%20time.%22:%22%20times.%22))}
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript:var num=prompt("History flood amount:");done=false;x=window.location.href;for (var i=1; i<=num; i++){history.pushState(0, 0, i==num?x:i.toString());if(i==num){done=true}}if(done===true){alert(%22History%20flood%20successful!%20%22+window.location.href+%22%20now%20appears%20in%20your%20history%20%22+num+(num==1?%22%20time.%22:%22%20times.%22))}
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -482,10 +547,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 6: Prevent Tab Closing
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:window.onbeforeunload = function() { return "Do you want to close"; }; alert("Tab Secured");
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript:window.onbeforeunload = function() { return "Do you want to close"; }; alert("Tab Secured");
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -499,10 +572,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 7: EdPuzzle Auto-Complete
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript: fetch("https://cdn.jsdelivr.net/gh/ading2210/edpuzzle-answers@latest/script.js").then(r => r.text()).then(r => eval(r))
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript: fetch("https://cdn.jsdelivr.net/gh/ading2210/edpuzzle-answers@latest/script.js").then(r => r.text()).then(r => eval(r))
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -516,10 +597,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 8: Speed Up Video
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript:setInterval(() => document.querySelector("video").playbackRate = (window.speed || (window.speed = +prompt("New speed", 10))), 50)
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript:setInterval(() => document.querySelector("video").playbackRate = (window.speed || (window.speed = +prompt("New speed", 10))), 50)
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -533,10 +622,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 9: Autoclicker
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript: var DELAY = 1;var autoClickerStyleElement = document.createElement('style');autoClickerStyleElement.innerHTML='*{cursor: crosshair !important;}';document.body.appendChild(autoClickerStyleElement);function addClicker(e) {if(!e.isTrusted) {return;}if(e.target.classList.contains('auto-clicker-target')) {e.target.classList.remove('auto-clicker-target');} else {e.target.classList.add('auto-clicker-target');}document.body.removeChild(autoClickerStyleElement);document.body.removeEventListener('click', addClicker);e.preventDefault();autoClick(e.target);}function autoClick(element) {if(element.classList.contains('auto-clicker-target')) {element.click();setTimeout(function(){ autoClick(element); }, DELAY);}}document.body.addEventListener('click', addClicker, 99999999999);
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript: var DELAY = 1;var autoClickerStyleElement = document.createElement('style');autoClickerStyleElement.innerHTML='*{cursor: crosshair !important;}';document.body.appendChild(autoClickerStyleElement);function addClicker(e) {if(!e.isTrusted) {return;}if(e.target.classList.contains('auto-clicker-target')) {e.target.classList.remove('auto-clicker-target');} else {e.target.classList.add('auto-clicker-target');}document.body.removeChild(autoClickerStyleElement);document.body.removeEventListener('click', addClicker);e.preventDefault();autoClick(e.target);}function autoClick(element) {if(element.classList.contains('auto-clicker-target')) {element.click();setTimeout(function(){ autoClick(element); }, DELAY);}}document.body.addEventListener('click', addClicker, 99999999999);
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -550,10 +647,18 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
           <p class="mt-4 card-title">
             Bookmarklet 10: Open an "about:blank" Tab
           </p>
-          <div class="code-block language-javascript">
-            <code>
-              javascript: (function () {var url = prompt("Paste the link you want to be embedded into an about:blank page.\n(INCLUDE https://)", "https://example.com"); var urlObj = new window.URL(window.location.href); win = window.open(); win.document.body.style.margin = "0"; win.document.body.style.height = "100vh"; var iframe = win.document.createElement("iframe"); iframe.style.border = "none"; iframe.style.width = "100%"; iframe.style.height = "100%"; iframe.style.margin = "0"; iframe.referrerpolicy = "no-referrer"; iframe.src = url; win.document.body.appendChild(iframe); })();
-            </code>
+          <div class="code-block-container relative">
+            <div class="code-block language-javascript">
+              <code>
+javascript: (function () {var url = prompt("Paste the link you want to be embedded into an about:blank page.\n(INCLUDE https://)", "https://example.com"); var urlObj = new window.URL(window.location.href); win = window.open(); win.document.body.style.margin = "0"; win.document.body.style.height = "100vh"; var iframe = win.document.createElement("iframe"); iframe.style.border = "none"; iframe.style.width = "100%"; iframe.style.height = "100%"; iframe.style.margin = "0"; iframe.referrerpolicy = "no-referrer"; iframe.src = url; win.document.body.appendChild(iframe); })();
+              </code>
+            </div>
+            <div class="copy-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-6l-2-2-2 2zm0 0V2"></path>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -587,7 +692,7 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
   <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
   <script src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
   <script>
     // Initialize Prism for syntax highlighting
     Prism.highlightAll();
@@ -666,7 +771,22 @@ That's it! You've set up your GPT4FREE server. You can now use the premium versi
     function fetchCustom(url) {
       return fetch(url, {mode: 'cors'});
     }
+    // Initialize Clipboard.js for copy button functionality
+    const copyButtons = document.querySelectorAll('.copy-button');
+    copyButtons.forEach((button) => {
+      const codeBlock = button.parentNode.querySelector('.code-block code');
+      const clipboard = new ClipboardJS(button, {
+        text: () => codeBlock.innerText.trim()
+      });
 
+      clipboard.on('success', (e) => {
+        e.clearSelection();
+        button.classList.add('copied');
+        setTimeout(() => {
+          button.classList.remove('copied');
+        }, 2000);
+      });
+    });
   </script>
 
 </body>
